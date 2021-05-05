@@ -5,7 +5,7 @@ import NominationList from "./NominationList";
 import omdb from "../apis/omdb";
 
 class App extends React.Component {
-  state = { movies: [], selectedMovies: [], search: "" };
+  state = { movies: [], selectedMovies: [], search: "", limit: false };
 
   onTermSubmit = async (term) => {
     const response = await omdb.get("/", {
@@ -19,12 +19,17 @@ class App extends React.Component {
   };
 
   onMovieSelect = (movie) => {
-    this.setState({ selectedMovies: [...this.state.selectedMovies, movie] });
+    if (this.state.selectedMovies.length < 5) {
+      this.setState({ selectedMovies: [...this.state.selectedMovies, movie] });
+    } else {
+      this.setState({ limit: true });
+    }
   };
   render() {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
+
         <div className="ui grid">
           <div className="ui row">
             <div className="eight wide column">
