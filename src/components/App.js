@@ -18,12 +18,21 @@ class App extends React.Component {
     this.setState({ movies: response.data.Search });
   };
 
+  // adding to nomination list
   onMovieSelect = (movie) => {
     if (this.state.selectedMovies.length < 5) {
       this.setState({ selectedMovies: [...this.state.selectedMovies, movie] });
     } else {
       this.setState({ limit: true });
     }
+  };
+
+  // removing from nomination list
+  onNominationRemove = (movie) => {
+    let filteredArray = this.state.selectedMovies.filter(
+      (movieSelected) => movie !== movieSelected
+    );
+    this.setState({ selectedMovies: filteredArray, limit: false });
   };
   render() {
     return (
@@ -32,7 +41,7 @@ class App extends React.Component {
         {this.state.limit ? (
           <div className="ui warning message">
             <div className="header">You can nominate a maximum of 5 movies</div>
-            Delete some movies from your nomination list, then try again
+            Remove some movies from your nomination list, then try again
           </div>
         ) : (
           ""
@@ -56,7 +65,10 @@ class App extends React.Component {
             <div className="eight wide column">
               <div className="ui segment">
                 <h4>Nomination List</h4>
-                <NominationList movies={this.state.selectedMovies} />
+                <NominationList
+                  onNominationRemove={this.onNominationRemove}
+                  movies={this.state.selectedMovies}
+                />
               </div>
             </div>
           </div>
