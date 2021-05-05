@@ -1,14 +1,15 @@
 import React from "react";
 import "./MovieItem.css";
 
-const MovieItem = ({ movie }) => {
+const MovieItem = ({ movie, onMovieSelect }) => {
   return (
     <div className="movie-item item">
-      <img className="ui image" src={movie.Poster}></img>
-      <div className={"content"}>
+      <img alt="movie poster" className="ui image" src={movie.Poster}></img>
+      <div className="content">
         <div className="header">
           {movie.Title} ({movie.Year})
         </div>
+        <button onClick={() => onMovieSelect(movie)}>Nominate</button>
       </div>
     </div>
   );
