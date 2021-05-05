@@ -29,6 +29,14 @@ class App extends React.Component {
     return (
       <div className="ui container">
         <SearchBar onFormSubmit={this.onTermSubmit} />
+        {this.state.limit ? (
+          <div className="ui warning message">
+            <div className="header">You can nominate a maximum of 5 movies</div>
+            Delete some movies from your nomination list, then try again
+          </div>
+        ) : (
+          ""
+        )}
 
         <div className="ui grid">
           <div className="ui row">
