@@ -1,7 +1,7 @@
 import React from "react";
 import NominationItem from "./NominationItem";
 
-const NominationList = ({ movies }) => {
+const NominationList = ({ movies, onNominationRemove }) => {
   if (movies.length === 0) {
     return (
       <div className="ui segment">
@@ -18,6 +18,7 @@ const NominationList = ({ movies }) => {
       <NominationItem
         key={nominatedMovie.imdbID}
         nominatedMovie={nominatedMovie}
+        onNominationRemove={onNominationRemove}
       />
     );
   });
