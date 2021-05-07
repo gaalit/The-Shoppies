@@ -1,4 +1,5 @@
 import React from "react";
+import NavBar from "./NavBar";
 import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import NominationList from "./NominationList";
@@ -53,6 +54,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="ui container">
+        <NavBar />
         <SearchBar onFormSubmit={this.onTermSubmit} />
         {this.state.limit ? (
           <div className="ui warning message">
