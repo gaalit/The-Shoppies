@@ -1,0 +1,31 @@
+.movie-item.item img {
+  width: 60.81px;
+  height: 89.99px;
+}
+
+.nav-bar {
+  background-image: url("https://images.unsplash.com/photo-1580712941584-760d19f1c187?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1789&q=80");
+  /* linear-gradient(141deg, #d80032 0%, #e9c46a 71%); */
+  height: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* options:"https://images.unsplash.com/photo-1613728913293-c99bb00ef39c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjJ8fHBvcGNvcm58ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+
+https://images.unsplash.com/photo-1512149074996-e923ac45be6a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzV8fHBvcGNvcm58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60
+
+*/
+
+.title {
+  font-size: 2rem;
+}
+
+.title .icon {
+  margin-left: 15px;
+}
