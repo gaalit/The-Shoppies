@@ -1,5 +1,5 @@
 import React from "react";
-import "./MovieItem.css";
+import "./styling.css";
 
 const MovieItem = ({ movie, onMovieSelect }) => {
   return (
@@ -9,7 +9,14 @@ const MovieItem = ({ movie, onMovieSelect }) => {
         <div className="header">
           {movie.Title} ({movie.Year})
         </div>
-        <button onClick={(e) => onMovieSelect(movie, e)}>Nominate</button>
+      </div>
+      <div className="right floated content">
+        <button
+          className="tiny ui yellow button"
+          onClick={(e) => onMovieSelect(movie, e)}
+        >
+          Nominate
+        </button>
       </div>
     </div>
   );

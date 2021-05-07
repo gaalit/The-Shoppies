@@ -23,7 +23,7 @@ const NominationList = ({ movies, onNominationRemove }) => {
     );
   });
 
-  return <div className="ui relaxed divided list">{nominatedMovie}</div>;
+  return <div className="ui celled animated list">{nominatedMovie}</div>;
 };
 
 export default NominationList;

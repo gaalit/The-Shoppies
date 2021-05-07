@@ -17,7 +17,7 @@ const MovieList = ({ movies, onMovieSelect }) => {
       />
     );
   });
-  return <div className="ui relaxed divided list">{renderedList}</div>;
+  return <div className="ui celled animated list">{renderedList}</div>;
 };
 
 export default MovieList;
