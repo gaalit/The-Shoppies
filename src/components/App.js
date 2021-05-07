@@ -5,7 +5,13 @@ import NominationList from "./NominationList";
 import omdb from "../apis/omdb";
 
 class App extends React.Component {
-  state = { movies: [], selectedMovies: [], search: "", limit: false };
+  state = {
+    movies: [],
+    selectedMovies: [],
+    disabledButton: [],
+    search: "",
+    limit: false,
+  };
 
   onTermSubmit = async (term) => {
     const response = await omdb.get("/", {
@@ -19,9 +25,23 @@ class App extends React.Component {
   };
 
   // adding to nomination list
-  onMovieSelect = (movie) => {
+  onMovieSelect = (movie, e) => {
     if (this.state.selectedMovies.length < 5) {
       this.setState({ selectedMovies: [...this.state.selectedMovies, movie] });
+      this.setState({
+        disabledButton: [...this.state.disabledButton, movie.imdbID],
+      });
+      // disabeling button
+      e.currentTarget.classList.add(movie.imdbID);
+      console.log(
+        "this is the btn when it's added",
+        document.getElementsByClassName(movie.imdbID)[0]
+      );
+
+      const btn = document.getElementsByClassName(movie.imdbID)[0];
+      btn.setAttribute("disabled", "true");
+
+      //e.currentTarget.disabled = true;
     } else {
       this.setState({ limit: true });
     }
@@ -32,6 +52,9 @@ class App extends React.Component {
     let filteredArray = this.state.selectedMovies.filter(
       (movieSelected) => movie !== movieSelected
     );
+    let btns = document.getElementsByClassName(movie.imdbID)[0];
+    btns.removeAttribute("disabled");
+
     this.setState({ selectedMovies: filteredArray, limit: false });
   };
   render() {
@@ -58,6 +81,8 @@ class App extends React.Component {
                 </h4>
                 <MovieList
                   onMovieSelect={this.onMovieSelect}
+                  selectedMovies={this.state.selectedMovies}
+                  disabledButton={this.state.disabledButton}
                   movies={this.state.movies}
                 />
               </div>

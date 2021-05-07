@@ -1,7 +1,12 @@
 import React from "react";
 import "./MovieItem.css";
 
-const MovieItem = ({ movie, onMovieSelect }) => {
+const MovieItem = ({
+  movie,
+  onMovieSelect,
+  selectedMovies,
+  disabledButton,
+}) => {
   return (
     <div className="movie-item item">
       <img alt="movie poster" className="ui image" src={movie.Poster}></img>
@@ -9,7 +14,7 @@ const MovieItem = ({ movie, onMovieSelect }) => {
         <div className="header">
           {movie.Title} ({movie.Year})
         </div>
-        <button onClick={() => onMovieSelect(movie)}>Nominate</button>
+        <button onClick={(e) => onMovieSelect(movie, e)}>Nominate</button>
       </div>
     </div>
   );
