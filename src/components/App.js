@@ -51,6 +51,11 @@ class App extends React.Component {
     let btns = document.getElementsByClassName(movie.imdbID)[0];
     btns.removeAttribute("disabled");
   };
+
+  // displaying how many nominations are remaining
+  remainingNominations = () => {
+    return 5 - this.state.selectedMovies.length;
+  };
   render() {
     return (
       <div className="ui container">
@@ -84,7 +89,18 @@ class App extends React.Component {
             </div>
             <div className="eight wide column">
               <div className="ui segment">
-                <h4>Nomination List</h4>
+                <div className="nomination-bar">
+                  <h4>Nomination List</h4>
+                  <button
+                    className={
+                      this.remainingNominations() === 0
+                        ? "ui red button"
+                        : "ui green button"
+                    }
+                  >
+                    {this.remainingNominations()} remaining nominations
+                  </button>
+                </div>
                 <NominationList
                   onNominationRemove={this.onNominationRemove}
                   movies={this.state.selectedMovies}
