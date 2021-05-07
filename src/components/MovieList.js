@@ -1,12 +1,7 @@
 import React from "react";
 import MovieItem from "./MovieItem";
 
-const MovieList = ({
-  movies,
-  onMovieSelect,
-  selectedMovies,
-  disabledButton,
-}) => {
+const MovieList = ({ movies, onMovieSelect }) => {
   // conditional statement making sure no error is thrown if the search term isn't complete enough
   if (!movies) {
     return (
@@ -19,8 +14,6 @@ const MovieList = ({
         key={movie.imdbID}
         onMovieSelect={onMovieSelect}
         movie={movie}
-        selectedMovies={selectedMovies}
-        disabledButton={disabledButton}
       />
     );
   });

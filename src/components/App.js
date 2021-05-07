@@ -8,11 +8,11 @@ class App extends React.Component {
   state = {
     movies: [],
     selectedMovies: [],
-    disabledButton: [],
     search: "",
     limit: false,
   };
 
+  // function that fetches data from omdb
   onTermSubmit = async (term) => {
     const response = await omdb.get("/", {
       params: {
@@ -24,38 +24,31 @@ class App extends React.Component {
     this.setState({ movies: response.data.Search });
   };
 
-  // adding to nomination list
+  // function that adds movie to nomination list
   onMovieSelect = (movie, e) => {
     if (this.state.selectedMovies.length < 5) {
       this.setState({ selectedMovies: [...this.state.selectedMovies, movie] });
-      this.setState({
-        disabledButton: [...this.state.disabledButton, movie.imdbID],
-      });
-      // disabeling button
-      e.currentTarget.classList.add(movie.imdbID);
-      console.log(
-        "this is the btn when it's added",
-        document.getElementsByClassName(movie.imdbID)[0]
-      );
 
+      // disabling button by first adding the imdbID to it as a class and then adding the disabled attribute
+      e.currentTarget.classList.add(movie.imdbID);
       const btn = document.getElementsByClassName(movie.imdbID)[0];
       btn.setAttribute("disabled", "true");
-
-      //e.currentTarget.disabled = true;
     } else {
       this.setState({ limit: true });
     }
   };
 
-  // removing from nomination list
+  // function that removes a movie from nomination list
   onNominationRemove = (movie) => {
     let filteredArray = this.state.selectedMovies.filter(
       (movieSelected) => movie !== movieSelected
     );
-    let btns = document.getElementsByClassName(movie.imdbID)[0];
-    btns.removeAttribute("disabled");
 
     this.setState({ selectedMovies: filteredArray, limit: false });
+
+    // selecting the button with that specific imdbID as the class and removing the disabled attribute
+    let btns = document.getElementsByClassName(movie.imdbID)[0];
+    btns.removeAttribute("disabled");
   };
   render() {
     return (
