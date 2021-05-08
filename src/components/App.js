@@ -67,7 +67,7 @@ class App extends React.Component {
               <div className="header">
                 You can nominate a maximum of 5 movies
               </div>
-              Remove some movies from your nomination list, then try again
+              Remove some movies from your nomination list, then try again.
             </div>
           ) : (
             ""
