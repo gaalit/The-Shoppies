@@ -58,53 +58,58 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div className="ui container">
+      <div>
         <NavBar />
-        <SearchBar onFormSubmit={this.onTermSubmit} />
-        {this.state.limit ? (
-          <div className="ui warning message">
-            <div className="header">You can nominate a maximum of 5 movies</div>
-            Remove some movies from your nomination list, then try again
-          </div>
-        ) : (
-          ""
-        )}
-
-        <div className="ui grid">
-          <div className="ui row">
-            <div className="eight wide column">
-              <div className="ui segment">
-                <h4>
-                  {this.state.movies === undefined
-                    ? ""
-                    : `Results for "${this.state.search}"`}
-                </h4>
-                <MovieList
-                  onMovieSelect={this.onMovieSelect}
-                  selectedMovies={this.state.selectedMovies}
-                  disabledButton={this.state.disabledButton}
-                  movies={this.state.movies}
-                />
+        <div className="ui container">
+          <SearchBar onFormSubmit={this.onTermSubmit} />
+          {this.state.limit ? (
+            <div className="ui warning message">
+              <div className="header">
+                You can nominate a maximum of 5 movies
               </div>
+              Remove some movies from your nomination list, then try again
             </div>
-            <div className="eight wide column">
-              <div className="ui segment">
-                <div className="nomination-bar">
-                  <h4>Nomination List</h4>
-                  <button
-                    className={
-                      this.remainingNominations() === 0
-                        ? "ui red button"
-                        : "ui green button"
-                    }
-                  >
-                    {this.remainingNominations()} remaining nominations
-                  </button>
+          ) : (
+            ""
+          )}
+
+          <div className="ui grid">
+            <div className="ui row">
+              <div className="eight wide column">
+                <div className="ui segment">
+                  <h4>
+                    {this.state.movies === undefined
+                      ? ""
+                      : `Results for "${this.state.search}"`}
+                  </h4>
+                  <MovieList
+                    onMovieSelect={this.onMovieSelect}
+                    selectedMovies={this.state.selectedMovies}
+                    disabledButton={this.state.disabledButton}
+                    movies={this.state.movies}
+                  />
                 </div>
-                <NominationList
-                  onNominationRemove={this.onNominationRemove}
-                  movies={this.state.selectedMovies}
-                />
+              </div>
+              <div className="eight wide column">
+                <div className="ui segment">
+                  <div className="nomination-bar">
+                    <h4>Nomination List</h4>
+                    <button
+                      style={{ border: "1.5px solid" }}
+                      className={
+                        this.remainingNominations() === 0
+                          ? "ui basic red button"
+                          : "ui basic black button"
+                      }
+                    >
+                      {this.remainingNominations()} remaining nominations
+                    </button>
+                  </div>
+                  <NominationList
+                    onNominationRemove={this.onNominationRemove}
+                    movies={this.state.selectedMovies}
+                  />
+                </div>
               </div>
             </div>
           </div>
