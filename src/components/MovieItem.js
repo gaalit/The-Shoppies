@@ -6,13 +6,13 @@ const MovieItem = ({ movie, onMovieSelect }) => {
     <div className="movie-item item">
       <img alt="movie poster" className="ui image" src={movie.Poster}></img>
       <div className="content">
-        <div className="header">
+        <div className="movie-search-result">
           {movie.Title} ({movie.Year})
         </div>
       </div>
       <div className="right floated content">
         <button
-          className="tiny ui yellow button"
+          className="tiny ui button"
           onClick={(e) => onMovieSelect(movie, e)}
         >
           Nominate

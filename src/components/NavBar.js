@@ -3,14 +3,14 @@ import "./styling.css";
 
 const NavBar = () => {
   return (
-    <section class="nav-bar">
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
-            The Shoppies: Movie awards for entrepreneurs
-            <span class="icon">
-              <i class="trophy icon"></i>
-            </span>
+    <section className="nav-bar">
+      <div className="hero-body">
+        <div className="container">
+          <h1 id="name" className="title">
+            The Shoppies:
+          </h1>
+          <h1 id="slogan" className="title">
+            Movie awards for entrepreneurs
           </h1>
         </div>
       </div>

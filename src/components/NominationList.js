@@ -4,12 +4,13 @@ import NominationItem from "./NominationItem";
 const NominationList = ({ movies, onNominationRemove }) => {
   if (movies.length === 0) {
     return (
-      <div className="ui segment">
-        <div className="ui active inverted dimmer">
-          <div className="ui text loader">Loading</div>
-        </div>
-        <p></p>
-      </div>
+      <h2
+        style={{ color: "#343a40", marginTop: "-5px" }}
+        className="ui small header"
+      >
+        <i className="plus large icon"></i>
+        <div className="content">Add a movie to your list</div>
+      </h2>
     );
   }
 
